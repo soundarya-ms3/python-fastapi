@@ -3,9 +3,9 @@ name: Build and Deploy Code
 on: [push, pull_request]
 
 jobs:
-  jobs1:
+  job1:
     runs-on: windows-latest
-   steps:
+    steps:
       - name: pulling git repo
         uses: actions/checkout@v2
       - name: Install python version 3.9
