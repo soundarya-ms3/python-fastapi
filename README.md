@@ -70,34 +70,57 @@ The command uvicorn main:app refers to:
 + --reload: make the server restart after code changes. Only do this for development.
 </details>
 
-## Download
+## API Testing Tool
 + Download Postman
   
-  -> Postman lets users create collections for their Postman API calls. Each collection can create subfolders and multiple requests. This helps in organizing your test suites.
+  - Postman lets users create collections for their Postman API calls. Each collection can create subfolders and multiple requests. This helps in organizing your test suites.
+  - There are different types of requests that can be made:
 
-## Setting up the database
+     * GET — Retrieve data
+     * POST — Send data.
+     * PUT — Update ( Updates the entire resource. Like POST but with a defined URI)
+     * PATCH — Update ( Updates partially will not create a resource if resource does not exist)
+     * DELETE — Deletes data.
+
+## Setting up FastAPI and PostgreSQL
+
+The easiest way to run the Postgres server is by using Docker and Docker-compose
 
 + Install PostgreSQL and create your user and database
 
-+ Change this line in database.py 
-```
-engine=create_engine("postgresql://{YOUR_DATABASE_USER}:{YOUR_DATABASE_PASSWORD}@localhost/{YOUR_DATABASE_NAME}",
-    echo=True)
-```
+    * Start the PostgreSQL Docker container:
+        ```
+        $ docker-compose up -d 
+        ```
+    * Stop the container:
+        ``` 
+        $ docker-compose down 
+        ```
++ Connecting to the PostgreSQL Server
+   * By default, SQLAlchemy uses psycopg2 to interact with the PostgreSQL server.
+     ```
+     pip install sqlalchemy psycopg2 
+     ```
+
++ execute PostgreSQL commands to communicate with the Postgres server
+  ``` 
+  docker exec -it <container name> bash 
+  ```
 
 
-
-### Interactive API docs
+## Interactive API docs
 
 Now go to http://127.0.0.1:8000/docs.
-
 You will see the automatic interactive API documentation (provided by Swagger UI):
 ![image](https://user-images.githubusercontent.com/70798723/225622226-8363cae5-1670-4a77-a1c2-91aecf3a753a.png)
 
 
-### Deployment
+## Deployment
 + Heroku
 + Docker
+
+## Demo Link
+
 
 
 
