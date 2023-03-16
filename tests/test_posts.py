@@ -4,7 +4,6 @@ import pytest
 
 def test_get_all_posts(authorized_client, test_posts):
     res = authorized_client.get("/posts/")
-
     def validate(post):
         return schemas.PostOut(**post)
     posts_map = map(validate, res.json())
